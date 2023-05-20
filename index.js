@@ -23,8 +23,7 @@ app.use(errorHandler)
 
 const mongoose = require('mongoose')
 
-const url =
-  `mongodb+srv://mariashpir2509:${encodeURIComponent("Masha19081908!!")}@cluster0.39uqrin.mongodb.net/Phonebook?retryWrites=true&w=majority`
+const url = process.env.MONGODB_URI
 
 mongoose.set('strictQuery', false)
 mongoose.connect(url)
@@ -142,7 +141,7 @@ app.delete('/api/persons/:id', (request, response) => {
     })
 })
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
